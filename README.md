@@ -23,16 +23,16 @@ A phishing campaign abusing Google's legitimate infrastructure (Drive, Cloud Sto
 
 | Type | Value |
 |------|-------|
-| Domain | `online.accessinformnotice.com` |
-| Domain | `accessinformattention.com` |
-| IP | `91.202.233.71` |
+| Domain | `online.accessinformnotice[.]com` |
+| Domain | `accessinformattention[.]com` |
+| IP | `91.202.233[.]71` |
 | ASN | `AS200593` (PROSPERO OOO) |
-| Netblock | `91.202.233.0/24` |
-| URL | `online.accessinformnotice.com/secure/index_newest.html` |
-| URL | `online.accessinformnotice.com/secure/secure.php` |
-| GCS | `storage.googleapis.com/persontwelve/online/offer.html` |
-| Google Drive | `drive.google.com/file/d/18XPn0pHsygsvZcinTivBQ_I225l-xzpC` |
-| Email | `neyjardespbeg2002@secure.accessinformattention.com` |
+| Netblock | `91.202.233[.]0/24` |
+| URL | `hxxps://online.accessinformnotice[.]com/secure/index_newest.html` |
+| URL | `hxxps://online.accessinformnotice[.]com/secure/secure.php` |
+| GCS | `hxxps://storage.googleapis[.]com/persontwelve/online/offer.html` |
+| Google Drive | `hxxps://drive.google[.]com/file/d/18XPn0pHsygsvZcinTivBQ_I225l-xzpC` |
+| Email | `neyjardespbeg2002@secure.accessinformattention[.]com` |
 | Server | `Apache/2.4.41 (Ubuntu)` |
 | FingerprintJS | `v4.2.1` |
 
