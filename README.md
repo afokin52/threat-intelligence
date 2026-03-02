@@ -4,6 +4,43 @@ Public threat intelligence reports and indicators of compromise (IOCs) from real
 
 ## Reports
 
+### 2026-03-02 — Targeted Phishing Impersonating Meta/Facebook Against a Human Rights NGO
+
+A spear-phishing email impersonating Meta/Facebook was delivered to a Russian human rights NGO. The attackers chained legitimate services (Resend.com → Amazon SES) to achieve SPF pass, DKIM pass, and ARC pass, ensuring inbox delivery in Gmail. The phishing link led to a likely compromised legitimate British recruitment website, bypassing URL reputation filters.
+
+**Key findings:**
+- SPF, DKIM (×2), and ARC all passed — delivered to Gmail inbox, not spam
+- Sending infrastructure: Resend.com email API → Amazon SES (ap-northeast-1, Tokyo) via domain registered at Sav.com (documented abuse issues)
+- Phishing host: `skillbaseltd[.]co[.]uk` — confirmed domain hijacking after expiry (company in liquidation, cert evidence via crt.sh); bypasses URL reputation filters
+- Broader infrastructure: cluster of 14 re-registered expired .co.uk domains on shared Cloudflare/cPanel hosting; 3 additional domains (`restorewellbeing[.]co[.]uk`, `rubyandginger[.]co[.]uk`, `senditmyway[.]co[.]uk`) have Resend+Amazon SES sending infrastructure pre-configured — staged for follow-on campaigns
+- Display Name "M e t a" with spaces — evades brand-name filters matching exact string "Meta"
+- Meta logo loaded directly from `facebook[.]com` — adds credibility and enables open tracking
+- Targeted attack: recipient address associated with a specific organizational program, not publicly listed; email in Russian adapted to target profile
+
+**Documents:**
+- [Incident Report (English, TLP:CLEAR)](reports/2026-03-02-meta-phishing/Incident_Report_2026-03-02_EN.pdf)
+- [Отчёт об инциденте (Russian, TLP:CLEAR)](reports/2026-03-02-meta-phishing/Incident_Report_2026-03-02_RU.pdf)
+
+**IOCs:**
+
+| Type | Value |
+|------|-------|
+| Email | `identity-policy@readlundy[.]com` |
+| Domain | `readlundy[.]com` (sending domain, registered Aug 15, 2025) |
+| Domain | `send.readlundy[.]com` (Resend SPF domain) |
+| Domain | `skillbaseltd[.]co[.]uk` (phishing host) |
+| URL | `hxxps://skillbaseltd[.]co[.]uk/` |
+| IP | `23[.]251[.]234[.]52` (Amazon SES, ap-northeast-1, Tokyo) |
+| IP | `104[.]21[.]15[.]116` (Cloudflare CDN) |
+| Message-ID | `0106019caf15ae50-9ddecc03-8e54-4d63-b110-5cf354fbf092-000000@ap-northeast-1.amazonses.com` |
+| Domain | `restorewellbeing[.]co[.]uk` (related infra: Resend+SES staged) |
+| Domain | `rubyandginger[.]co[.]uk` (related infra: Resend+SES staged) |
+| Domain | `senditmyway[.]co[.]uk` (related infra: Resend+SES staged) |
+
+**MITRE ATT&CK:** T1583.001, T1583.006, T1584.001, T1585.002, T1566.002, T1056.003, T1656, T1036
+
+---
+
 ### 2026-02-18 — Targeted Phishing Impersonating National Endowment for Democracy
 
 A spear-phishing campaign impersonating the National Endowment for Democracy (NED), targeting individuals in the NGO sector with fabricated grant opportunities. The email was sent from a compromised Zambian real estate domain via Russian VPS infrastructure.
