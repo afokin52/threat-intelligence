@@ -4,6 +4,39 @@ Public threat intelligence reports and indicators of compromise (IOCs) from real
 
 ## Reports
 
+### 2026-03-10 — Multi-Protocol Scanner with MCP Module Detected in Honeypot
+
+A multi-service honeypot recorded a systematic reconnaissance campaign from a single IP address that probed 8 services in 10 minutes, including a JSON-RPC initialization request for the Model Context Protocol (MCP). This is the first documented observation of MCP scanning integrated into a multi-protocol scanner alongside traditional services such as SSH, MySQL, Docker API, and Winbox. The scanner identified itself as "gitmc-org-mcp-scanner v1.0.0" — a tool not found in any public repository.
+
+**Key findings:**
+- MCP `initialize` handshake (protocol version 2025-06-18) sent as part of a multi-service scan covering SSH, Telnet, HTTP/S, MySQL, Docker API, Memcached, and Winbox
+- Full set of client capabilities requested: `sampling`, `elicitation`, `roots` — maximizing server response
+- Scanner self-identifies as `gitmc-org-mcp-scanner v1.0.0` — no public references found
+- Same IP attempted Docker API exploitation: `POST /v1.43/containers/create` with Image: alpine, Cmd: `cat /etc/shadow`
+- SSH fingerprint: OpenSSH 10.2 with post-quantum KEX algorithms (mlkem768x25519-sha256)
+- Source: residential DSL (Orange Polska, Warsaw) — likely purpose-built scanning system or residential proxy
+- Context: GreyNoise saw no MCP payloads on honeypots in November 2025; by March 2026, MCP scanning is part of commodity scanners
+
+**Documents:**
+- [Incident Report (English, TLP:CLEAR)](reports/2026-03-10-mcp-scanner/Incident_Report_2026-03-10_EN.pdf)
+- [Отчёт об инциденте (Russian, TLP:CLEAR)](reports/2026-03-10-mcp-scanner/Incident_Report_2026-03-10_RU.pdf)
+
+**IOCs:**
+
+| Type | Value |
+|------|-------|
+| IP | `95[.]51[.]243[.]130` (Orange Polska, Warsaw, PL) |
+| rDNS | `ojl130[.]internetdsl[.]tpnet[.]pl` |
+| User-Agent | `curl/8.7.1` |
+| HASSH | `eeca2460550b9ded084ecf2f70a75356` (OpenSSH 10.2) |
+| MCP client | `gitmc-org-mcp-scanner` v1.0.0 |
+| MCP proto | `2025-06-18` |
+| Docker path | `/v1.43/containers/create` (Image: alpine, Cmd: cat /etc/shadow) |
+
+**MITRE ATT&CK:** T1595.002, T1046, T1190, T1610, T1613, T1552.001
+
+---
+
 ### 2026-03-05 — WhatsApp Account Takeover via "Defisher" Phishing Kit
 
 A phishing link distributed via Signal led to a WhatsApp account compromise through the device linking feature. The phishing site impersonated WhatsApp Web, tricking the victim into entering their phone number and then a device linking code. The attack was powered by a commercial phishing kit called "Defisher" — a Next.js application with an admin panel, WebSocket-based C2, and optional CIS country filtering.
