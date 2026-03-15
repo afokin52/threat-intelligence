@@ -4,6 +4,43 @@ Public threat intelligence reports and indicators of compromise (IOCs) from real
 
 ## Reports
 
+### 2026-03-14 — Telegram Account Hijacking via Fake Voting Phishing Campaign
+
+A phishing campaign targeting Russian-speaking Muslim communities was observed distributing fake "regional voting" links via Telegram. Victims clicking the link on a mobile device were shown a fake voting page with two candidates, then prompted to "authorize via Telegram to prevent fraud." The authorization step hijacked the victim's Telegram session, giving the attacker full account access. The campaign uses a professional Phishing-as-a-Service kit with polymorphic CSS obfuscation, anti-replay tokens, and User-Agent filtering (desktop users redirected to Google, Telegram bot previews suppressed). Infrastructure is hosted on Pitline Ltd (Kharkiv, Ukraine) bulletproof hosting — Censys labels the IP as BULLETPROOF (confidence 0.75). The same server hosts 11 co-located domains including 4 "vybory" (elections) domains. F6 (formerly Group-IB) documented this kit across 290+ domains since 2022.
+
+**Key findings:**
+- Professional phishing kit (PhaaS): polymorphic CSS class prefixes regenerated per request, anti-replay URL tokens, hidden junk HTML content for anti-detection
+- 3-stage User-Agent filtering: mobile → phishing page, desktop → Google redirect, TelegramBot → 204 No Content (suppresses link preview)
+- Server rebuilt from Windows (RDP/SMB) to Debian Linux specifically for this campaign (Censys Service History: Feb 12 → Mar 7, 2026)
+- SSL certificate issued same day as attack (Let's Encrypt E7, 2026-03-14 11:16 UTC)
+- 12 domains on single IP across 2 registrar clusters (Namecheap + Global Domain Group) with separate Cloudflare accounts — OPSEC compartmentalization
+- Part of a documented mass campaign: F6 tracked 290+ domains using this template since 2022, peak activity February 2026 (39 domains/month)
+- Viral distribution model: victims instructed to "forward to contacts," turning each compromise into a new attack vector
+
+**Documents:**
+- [Incident Report (English, TLP:CLEAR)](reports/2026-03-14-telegram-vote-phishing/Incident_Report_2026-03-14_EN.pdf)
+- [Отчёт об инциденте (Russian, TLP:CLEAR)](reports/2026-03-14-telegram-vote-phishing/Incident_Report_2026-03-14_RU.pdf)
+
+**IOCs:**
+
+| Type | Value |
+|------|-------|
+| Domain | `beaminkjet[.]com` |
+| IP | `77[.]83[.]39[.]62` (Pitline Ltd, Kharkiv, UA — BULLETPROOF) |
+| ASN | AS214940 (KPRONET) / AS215693 (PalmaHost) |
+| Network | `77[.]83[.]36[.]0/22` (Pitline Ltd) |
+| Email | `syimono1488@gmail[.]com` (WHOIS registrant) |
+| URL | `hxxps://beaminkjet[.]com/umarashab` |
+| Domain | `vybory[.]cyou`, `vybory[.]bond`, `vybory[.]sbs`, `vybory[.]cfd` |
+| Domain | `vesna2026[.]cyou`, `vesna2026[.]cfd`, `vesna2026[.]sbs` |
+| Domain | `onetop[.]sbs`, `onetop[.]cfd`, `onetop[.]bond`, `onetop[.]click` |
+| Hash (MD5) | `8d1c6e9b6c08132c9bddf5128515ebcc` (phishing kit identifier in HTML comments) |
+| SSL Serial | `06:f1:d4:14:46:8b:2d:48:b9:40:cb:a9:42:d2:24:6a:b9:e5` |
+
+**MITRE ATT&CK:** T1566.002, T1204.001, T1036.005, T1027, T1539, T1056.003, T1556, T1583.001, T1583.003, T1588.002, T1608.002, T1550.004, T1589.001, T1070.004, T1213
+
+---
+
 ### 2026-03-10 — Multi-Protocol Scanner with MCP Module Detected in Honeypot
 
 A multi-service honeypot recorded a systematic reconnaissance campaign from a single IP address that probed 8 services in 10 minutes, including a JSON-RPC initialization request for the Model Context Protocol (MCP). This is the first documented observation of MCP scanning integrated into a multi-protocol scanner alongside traditional services such as SSH, MySQL, Docker API, and Winbox. The scanner identified itself as "gitmc-org-mcp-scanner v1.0.0" — a tool not found in any public repository.
