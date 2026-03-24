@@ -4,6 +4,46 @@ Public threat intelligence reports and indicators of compromise (IOCs) from real
 
 ## Reports
 
+### 2026-03-09 — Gmail Workspace Credential Phishing via Commercial PhaaS Platform
+
+A phishing email impersonating a Gmail Workspace system notification ("Release Incoming Messages from pooled storage") was delivered to a public-facing email address of a human rights organization. The email was sent through a legitimate SendGrid account (SPF/DKIM pass), using a compromised Indian company's domain as the sender identity. The phishing link led to a commercial Phishing-as-a-Service platform with a two-stage architecture: a browser fingerprinting framework (collector.js) screens visitors before showing the credential harvesting form. The fingerprinting includes WebGL GPU identification, WebRTC STUN requests to reveal real IPs behind VPNs, anti-bot prototype patching detection, and DevTools detection. The platform uses wildcard DNS on Cloudflare, generating unique subdomains per campaign. A licensing system was confirmed when the operator's subscription expired — the backend returned "Your license has expired."
+
+**Key findings:**
+- Two-stage phishing: landing page runs collector.js fingerprinting framework before redirecting to backend — bots, sandboxes, and researchers are filtered before the phishing form is shown
+- Browser fingerprinting includes WebRTC STUN (stun.l.google.com:19302) to deanonymize VPN users, WebGL GPU fingerprint to detect VMs (SwiftShader/llvmpipe), and anti-automation checks
+- Commercial PhaaS with licensing: expired license returns "Your license has expired. Please renew to continue using the service."
+- Wildcard DNS on bitnest[.]za[.]com: any subdomain resolves to Cloudflare CDN, enabling instant campaign subdomain generation
+- SendGrid abuse: account user_id=60417945, SPF/DKIM pass, inbox delivery guaranteed
+- Infrastructure link: Reply-To domain (sevensounds[.]ae) and exquisite[.]za[.]com share the same IP (91[.]193[.]42[.]16) via hostingww.com — connecting the Reply-To infrastructure to the za.com phishing namespace
+- Sender domain (oesplindia[.]com) is a legitimate Indian company with open FTP, MySQL, SNMP ports — likely compromised
+
+**Documents:**
+- [Incident Report (English, TLP:CLEAR)](reports/2026-03-09-gmail-phishing-phaas/Incident_Report_2026-03-09_EN.pdf)
+- [Отчёт об инциденте (Russian, TLP:CLEAR)](reports/2026-03-09-gmail-phishing-phaas/Incident_Report_2026-03-09_RU.pdf)
+
+**IOCs:**
+
+| Type | Value |
+|------|-------|
+| URL | `hxxps://maxillae890[.]bitnest[.]za[.]com/testatrix449/` |
+| URL | `hxxps://demo[.]bitnest[.]za[.]com/testatrix449/` |
+| Domain | `bitnest[.]za[.]com` (PhaaS platform, wildcard DNS, Cloudflare) |
+| Domain | `oesplindia[.]com` (compromised sender) |
+| Domain | `sevensounds[.]ae` (Reply-To) |
+| IP | `188[.]114[.]96[.]11` (Cloudflare CDN) |
+| IP | `188[.]114[.]97[.]11` (Cloudflare CDN) |
+| IP | `170[.]10[.]163[.]134` (LiquidNet US, AS14555) |
+| IP | `91[.]193[.]42[.]16` (AMANKA SARL / AWS, AS16509) |
+| IP | `149[.]72[.]123[.]24` (SendGrid) |
+| Email | `sandeep@oesplindia[.]com` (From, compromised) |
+| Email | `td@sevensounds[.]ae` (Reply-To) |
+| SendGrid | User ID `60417945`, tracking: `u60417945[.]ct[.]sendgrid[.]net` |
+| Script | `collector.js?v=21e981d0` (fingerprinting framework) |
+
+**MITRE ATT&CK:** T1566.002, T1598.003, T1589.001, T1583.001, T1583.006, T1585.002, T1036.005, T1071.001, T1217
+
+---
+
 ### 2026-03-15 — Mamont Banking Trojan: Telegram Phishing Disguised as "Accident Photos"
 
 Distribution of the Mamont banking trojan via Telegram, observed on March 12, 2026. A victim received a message from a compromised contact — "Hey, remember him? He crashed" — with an attached HTML file that redirected to a Telegram channel hosting a malicious APK. The malware requests default SMS app permissions, exfiltrates banking SMS codes, and automatically forwards phishing messages to all contacts on the device. C2 is conducted entirely via Telegram Bot API. Mamont is the most prevalent Android banking trojan in Russia — Kaspersky reported a 36x increase in attacked users in 2025.
