@@ -4,6 +4,50 @@ Public threat intelligence reports and indicators of compromise (IOCs) from real
 
 ## Reports
 
+### 2026-03-27 — ClickFix Social Engineering Campaign Delivering Vidar Stealer via Fake Cloudflare CAPTCHA
+
+A social engineering attack using the "ClickFix" technique was observed targeting users through a compromised Hebrew language school website (oulpansheli[.]org). The page displayed a fake Cloudflare "Verify you are human" dialog instructing victims to open PowerShell as administrator and paste a "verification code." The clipboard payload was an XOR-obfuscated PowerShell command (key: PuHNJs) that downloaded and executed a Go-based crypter ("blindcousin") from productionmaza[.]cyou. The crypter decrypted an embedded Vidar Stealer v1.0 payload using a custom 5-round XOR/SUB algorithm. The stealer exfiltrated browser credentials, cookies, Outlook profiles, and system information to a Hetzner-hosted C2 server, with Telegram and Steam Community profiles serving as dead drop resolvers for backup C2 addresses.
+
+**Key findings:**
+- Three-stage attack chain: ClickFix social engineering → Go crypter with custom encryption → Vidar Stealer
+- Go loader "blindcousin" uses garble obfuscator with 5-round decryption (XOR, SUB, byte-swap, reverse)
+- Vidar v1.0 with botnet ID 4c0a49bed86cb25165c2f64c7c27c48a confirmed by Recorded Future Triage (score 10/10)
+- C2 at 78[.]46[.]199[.]184 (Hetzner DE) with self-signed TLS certificate, domain neugepower[.]net
+- Dead drop resolvers: Telegram channel t[.]me/v2ts23m contains backup C2 domain skfilmsint[.]com
+- Steam profile 76561198724155486 used as additional dead drop resolver
+- Process injection into Chrome and Edge browsers for credential theft
+- Targets: Chrome/Edge cookies and credentials, Outlook email profiles (v14.0-16.0), system hardware fingerprinting
+
+**Documents:**
+- [Incident Report (English, TLP:CLEAR)](reports/2026-03-27-clickfix-vidar/Incident_Report_2026-03-27_EN.pdf)
+- [Отчёт об инциденте (Russian, TLP:CLEAR)](reports/2026-03-27-clickfix-vidar/Incident_Report_2026-03-27_RU.pdf)
+
+**IOCs:**
+
+| Type | Value |
+|------|-------|
+| Domain | `oulpansheli[.]org` (compromised landing page, OVH FR) |
+| Domain | `productionmaza[.]cyou` (payload delivery, Cloudflare) |
+| Domain | `neugepower[.]net` (C2 domain, Hetzner) |
+| Domain | `skfilmsint[.]com` (backup C2, NameCheap/Cloudflare) |
+| IP | `78[.]46[.]199[.]184` (Vidar C2, Hetzner DE) |
+| IP | `213[.]186[.]33[.]16` (landing page, OVH FR) |
+| IP | `172[.]67[.]148[.]28` (Cloudflare proxy, productionmaza) |
+| IP | `104[.]21[.]55[.]125` (Cloudflare proxy, productionmaza) |
+| URL | `hxxps://oulpansheli[.]org/ru/` |
+| URL | `hxxps://productionmaza[.]cyou/api/index.php?a=dl&token=fcdd5b796fbf5cb5614da7aaa4773fb404771c4821e4b8d30305ed8df58a2188&src=cloudflare&mode=cloudflare` |
+| URL | `hxxps://telegram[.]me/v2ts23m` (dead drop) |
+| URL | `hxxps://steamcommunity[.]com/profiles/76561198724155486` (dead drop) |
+| SHA256 | `e2f6f791dd32b18fd7a002efce17fdd039f69809f7ddabeda9d0de1035da82d9` (Go loader) |
+| SHA256 | `4a788d7009f7cd13fda4291461e67191bc4b9c34e16761796e0457810fe5bba8` (Vidar payload) |
+| SHA256 | `4d4cd6ee9165a7b5e1bb8c7e91e2d62cb9db662b415900959785d24a59188a42` (ZIP archive) |
+| Botnet | `4c0a49bed86cb25165c2f64c7c27c48a` |
+| Mutex | `ChromeBuildTools` |
+
+**MITRE ATT&CK:** T1204.002, T1059.001, T1027.013, T1140, T1105, T1036.005, T1584.001, T1071.001, T1070.004, T1564.003, T1555, T1555.003, T1552.001, T1005, T1114, T1217, T1012, T1082, T1124
+
+---
+
 ### 2026-03-09 — Gmail Workspace Credential Phishing via Commercial PhaaS Platform
 
 A phishing email impersonating a Gmail Workspace system notification ("Release Incoming Messages from pooled storage") was delivered to a public-facing email address of a human rights organization. The email was sent through a legitimate SendGrid account (SPF/DKIM pass), using a compromised Indian company's domain as the sender identity. The phishing link led to a commercial Phishing-as-a-Service platform with a two-stage architecture: a browser fingerprinting framework (collector.js) screens visitors before showing the credential harvesting form. The fingerprinting includes WebGL GPU identification, WebRTC STUN requests to reveal real IPs behind VPNs, anti-bot prototype patching detection, and DevTools detection. The platform uses wildcard DNS on Cloudflare, generating unique subdomains per campaign. A licensing system was confirmed when the operator's subscription expired — the backend returned "Your license has expired."
