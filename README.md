@@ -4,6 +4,42 @@ Public threat intelligence reports and indicators of compromise (IOCs) from real
 
 ## Reports
 
+### 2026-03-31 — Mass Credential Phishing Campaign Impersonating Google Workspace
+
+A large-scale credential phishing operation was identified targeting organizations across five countries. Phishing emails impersonate Google Workspace storage notifications and are delivered via a compromised Amazon SES account, spoofing a corporate domain with DMARC p=NONE. The phishing link traverses four redirect levels — Sophos Email Protection, bit.ly, Google redirect, and a compromised Brazilian website — before reaching a credential harvesting page disguised as a Cloudflare protection check. The page extracts the victim's email from the URL fragment (base64-encoded) and redirects to a C2 server running a Laravel application on a VDSina VPS in the Netherlands.
+
+**Key findings:**
+- Four-level redirect chain abusing legitimate services (Sophos, Google, bit.ly) to evade URL filtering
+- Phishing kit with anti-analysis: blocks DevTools, right-click, keyboard shortcuts; emergency redirect on detection
+- C2 infrastructure: 62 DGA-like .ru domains on a single IP (89[.]124[.]98[.]199), all using DNSPod (Tencent Cloud) nameservers
+- Three parallel campaigns (gbe, sey, 5ppp) with a single MongoDB-based campaign panel active since August 2025
+- Victims span NGOs, financial services, government (Ministry of Trade Malaysia), IT outsourcing, and healthcare
+- Laravel backend with Cloudflare reverse proxy, but origin IP exposed through direct DNS resolution
+- Compromised Amazon SES account (eu-west-1) with unique Feedback-ID fingerprint for detection
+
+**Documents:**
+- [Incident Report (English, TLP:CLEAR)](reports/2026-03-31-gworkspace-phishing/Incident_Report_2026-03-31_EN.pdf)
+- [Отчёт об инциденте (Russian, TLP:CLEAR)](reports/2026-03-31-gworkspace-phishing/Incident_Report_2026-03-31_RU.pdf)
+
+**IOCs:**
+
+| Type | Value |
+|------|-------|
+| C2 Domain | `crooveazoo[.]ru` |
+| C2 IP | `89[.]124[.]98[.]199` (AS216071, VDSina NL) |
+| C2 Path | `/HeJK!UMT/$` |
+| Phishing Host | `lasys[.]com[.]br` (compromised, 69[.]6[.]213[.]189) |
+| Phishing Paths | `/teste/gbe/ccc/`, `/teste/sey/ccc/`, `/teste/5ppp/ccc/` |
+| Sender Domain | `ejm[.]org` (spoofed, DMARC p=NONE) |
+| SES IP | `54[.]240[.]4[.]15` (Amazon SES eu-west-1) |
+| bit.ly | `bit[.]ly/4rVLObb`, `bit[.]ly/41muSA5`, `bit[.]ly/4bGmwcs` |
+| SSH Host Key | `23c5cfe5298cc99c7f7a02e236d6cc9c4fc22e8f85c0d064f45a93c8b92b30b0` |
+| Reserve Domains | 61 additional .ru DGA domains on same IP (full list in report) |
+
+**MITRE ATT&CK:** T1566.002, T1583.001, T1583.006, T1584.004, T1078, T1608.005, T1027, T1497.001
+
+---
+
 ### 2026-03-27 — ClickFix Social Engineering Campaign Delivering Vidar Stealer via Fake Cloudflare CAPTCHA
 
 A social engineering attack using the "ClickFix" technique was observed targeting users through a compromised Hebrew language school website (oulpansheli[.]org). The page displayed a fake Cloudflare "Verify you are human" dialog instructing victims to open PowerShell as administrator and paste a "verification code." The clipboard payload was an XOR-obfuscated PowerShell command (key: PuHNJs) that downloaded and executed a Go-based crypter ("blindcousin") from productionmaza[.]cyou. The crypter decrypted an embedded Vidar Stealer v1.0 payload using a custom 5-round XOR/SUB algorithm. The stealer exfiltrated browser credentials, cookies, Outlook profiles, and system information to a Hetzner-hosted C2 server, with Telegram and Steam Community profiles serving as dead drop resolvers for backup C2 addresses.
