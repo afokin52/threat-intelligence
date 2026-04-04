@@ -4,6 +4,39 @@ Public threat intelligence reports and indicators of compromise (IOCs) from real
 
 ## Reports
 
+### 2026-04-04 — Instagram Credential Phishing via Compromised Telegram Accounts
+
+A cross-platform phishing campaign targeting Ukrainian-speaking users was identified. Attackers compromise Telegram accounts and mass-message all contacts with a "vote for a child in a drawing contest" lure. The link leads to a reverse-proxied Instagram login page hosted on bulletproof infrastructure. The server proxies the real Instagram login, loading resources from static.cdninstagram.com, while intercepting submitted credentials server-side. The phishing kit supports full 2FA flow and uses Cloudflare Turnstile as an anti-bot gate.
+
+**Key findings:**
+- Cross-platform attack: Telegram as delivery channel, Instagram credentials as the target
+- Reverse proxy phishing: real Instagram login page proxied through nginx, POST to /accounts/login/ajax/ intercepted server-side
+- Full 2FA interception support (PolarisLoginActionGoToTwoFactorLogin modules)
+- Wildcard DNS: any subdomain of va-kt[.]bayern resolves to the phishing server
+- Only /ua/ and /uk/ routes active (Ukrainian audience targeting); all other prefixes return empty stubs
+- Numeric path ID (1–1000+) used as victim/campaign tracking parameter
+- Hosted on AS214351 (FEMO IT SOLUTIONS LIMITED) — Censys-classified BULLETPROOF hosting with 514 domains
+- Same ASN hosts phishing domains impersonating BlaBlaCar, Stripe, Mercado Pago, Wise, SoFi, and others
+
+**Documents:**
+- [Incident Report (English, TLP:CLEAR)](reports/2026-04-04-instagram-phishing/Incident_Report_2026-04-04_EN.pdf)
+- [Отчёт об инциденте (Russian, TLP:CLEAR)](reports/2026-04-04-instagram-phishing/Incident_Report_2026-04-04_RU.pdf)
+
+**IOCs:**
+
+| Type | Value |
+|------|-------|
+| Domain | `va-kt[.]bayern` (wildcard DNS) |
+| Domain | `friend[.]va-kt[.]bayern` |
+| URL | `hxxp://friend[.]va-kt[.]bayern/ua/6` |
+| IP | `62[.]60[.]226[.]50` (AS214351, Frankfurt DE) |
+| ASN | AS214351 (FEMO IT SOLUTIONS LIMITED) |
+| SSH HASSH | `41ff3ecd1458b0bf86e1b4891636213e` |
+
+**MITRE ATT&CK:** T1586.002, T1566.002, T1598.003, T1036.005, T1583.001, T1583.003, T1557
+
+---
+
 ### 2026-03-31 — Mass Credential Phishing Campaign Impersonating Google Workspace
 
 A large-scale credential phishing operation was identified targeting organizations across five countries. Phishing emails impersonate Google Workspace storage notifications and are delivered via a compromised Amazon SES account, spoofing a corporate domain with DMARC p=NONE. The phishing link traverses four redirect levels — Sophos Email Protection, bit.ly, Google redirect, and a compromised Brazilian website — before reaching a credential harvesting page disguised as a Cloudflare protection check. The page extracts the victim's email from the URL fragment (base64-encoded) and redirects to a C2 server running a Laravel application on a VDSina VPS in the Netherlands.
