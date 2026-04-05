@@ -4,6 +4,39 @@ Public threat intelligence reports and indicators of compromise (IOCs) from real
 
 ## Reports
 
+### 2026-04-05 — Telegram Account Hijacking via Phishing VPN Bot Mini App
+
+An active phishing campaign targeting Telegram account hijacking was identified, disguised as a free VPN service for bypassing Telegram restrictions in Russia. The attack uses the channel @vpnztelegram as a lure, the bot @Aimashbot ("Mash VPN Bot") as a funnel, and a Telegram Mini App (WebApp) hosted on bulletproof infrastructure as the phishing page. Source code analysis of the Mini App revealed a full account hijacking operation: phone number collection via `requestContact()`, authorization code interception (5-digit code), and cloud password (2FA) theft. After successful hijacking, victims are redirected to a legitimate VPN bot to mask the compromise.
+
+**Key findings:**
+- Full Telegram account hijacking via Mini App: phone → auth code → 2FA password
+- Phishing Mini App hosted on `aerobot20[.]sbs`, content proxied via Telegram MTProto (invisible in client DNS)
+- Homoglyph text obfuscation: mixed Cyrillic/Latin characters to evade automated detection
+- Post-hijack redirect to legitimate @DureVpnBot (291K MAU) via referral link for dual monetization
+- Campaign matches F6-documented mass wave (Feb 2026, ~4,800 incidents in 2 months)
+- Channel @vpnztelegram: 1,650 subscribers, 24,300 views on single post — aggressive spam distribution
+
+**Documents:**
+- [Incident Report (English, TLP:CLEAR)](reports/2026-04-05-telegram-vpn-hijacking/Incident_Report_2026-04-05_EN.pdf)
+- [Отчёт об инциденте (Russian, TLP:CLEAR)](reports/2026-04-05-telegram-vpn-hijacking/Incident_Report_2026-04-05_RU.pdf)
+
+**IOCs:**
+
+| Type | Value |
+|------|-------|
+| Domain | `aerobot20[.]sbs` |
+| Domain | `qqeki982.aerobot20[.]sbs` |
+| IP | `104[.]21[.]8[.]168` (Cloudflare CDN) |
+| IP | `172[.]67[.]139[.]203` (Cloudflare CDN) |
+| URL | `hxxps://qqeki982.aerobot20[.]sbs/checkstatus.php` |
+| Telegram Channel | `@vpnztelegram` |
+| Telegram Bot | `@Aimashbot` ("Mash VPN Bot") |
+| Telegram User | `@aimash` (probable operator) |
+
+**MITRE ATT&CK:** T1566.003, T1598.003, T1078, T1539, T1656
+
+---
+
 ### 2026-04-04 — Instagram Credential Phishing via Compromised Telegram Accounts
 
 A cross-platform phishing campaign targeting Ukrainian-speaking users was identified. Attackers compromise Telegram accounts and mass-message all contacts with a "vote for a child in a drawing contest" lure. The link leads to a reverse-proxied Instagram login page hosted on bulletproof infrastructure. The server proxies the real Instagram login, loading resources from static.cdninstagram.com, while intercepting submitted credentials server-side. The phishing kit supports full 2FA flow and uses Cloudflare Turnstile as an anti-bot gate.
