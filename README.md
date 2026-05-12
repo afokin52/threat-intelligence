@@ -38,7 +38,7 @@ A phishing email was delivered from a legitimate Microsoft 365 mailbox belonging
 | Domain | `shodiothai[.]enterprises` (cluster) |
 | URL | `hxxps://stiofidri[.]company/u@xTBw1Q9qK4Qb0ZS9gxFUS/` (payload URL) |
 | URL | `hxxps://nam[.]dcv[.]ms/o9XDteis3W` (Microsoft Customer Voice lure, now 404) |
-| Email | `hortensias.psychologue@unapei-ap[.]fr` (compromised sender — notify, do not block) |
+| Domain | `unapei-ap[.]fr` (compromised mailbox — notify organisation IT, do not block) |
 | Kit artifact | XOR key `3HO3y7Soso1HgJPsnDn2pg==` (anti-sandbox JS) |
 
 **MITRE ATT&CK:** T1583.001, T1583.004, T1586.002, T1078.004, T1566.002, T1566.003, T1656, T1036.005, T1027.013, T1497.001, T1480, T1539, T1056.003, T1114.002

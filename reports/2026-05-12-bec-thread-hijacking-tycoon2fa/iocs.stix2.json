@@ -35,7 +35,7 @@
         "indicator--48ad3f2d-6c68-56f2-8392-4ce21704bf1b",
         "indicator--efaacb75-03c1-5741-a29a-f9b00780525b",
         "indicator--e2b6997f-b561-5cdd-a8ba-514cc5fc6038",
-        "indicator--59c66244-0a94-5c53-9fb6-f34133b1b8c9",
+        "indicator--b14d324c-458a-56a6-83b4-1ecde085b272",
         "indicator--5e83c783-1b60-560e-aa42-055ff31510a8"
       ],
       "labels": [
@@ -917,16 +917,16 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
-      "id": "indicator--59c66244-0a94-5c53-9fb6-f34133b1b8c9",
+      "id": "indicator--b14d324c-458a-56a6-83b4-1ecde085b272",
       "created": "2026-05-12T00:00:00Z",
       "modified": "2026-05-12T00:00:00Z",
       "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
-      "name": "EMAIL: hortensias.psychologue@unapei-ap.fr",
-      "description": "Compromised M365 account used to send phishing — notify, do not block",
+      "name": "DOMAIN: unapei-ap.fr",
+      "description": "Legitimate French NGO — mailbox compromised, notify organisation IT, do not block",
       "indicator_types": [
         "malicious-activity"
       ],
-      "pattern": "[email-addr:value = 'hortensias.psychologue@unapei-ap.fr']",
+      "pattern": "[domain-name:value = 'unapei-ap.fr']",
       "pattern_type": "stix",
       "valid_from": "2026-05-12T00:00:00Z",
       "labels": [

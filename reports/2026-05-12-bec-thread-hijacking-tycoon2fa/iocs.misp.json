@@ -98,12 +98,12 @@
         "distribution": "5"
       },
       {
-        "uuid": "a1a0ca24-ed7b-54db-95b6-11eb647b84b7",
-        "type": "email-src",
-        "category": "Payload delivery",
-        "value": "hortensias.psychologue@unapei-ap.fr",
-        "to_ids": false,
-        "comment": "Compromised M365 account used to send phishing — notify, do not block",
+        "uuid": "d9200c9d-c7c1-575c-bc06-bd2d38958917",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "unapei-ap.fr",
+        "to_ids": true,
+        "comment": "Legitimate French NGO — mailbox compromised, notify organisation IT, do not block",
         "distribution": "5"
       },
       {
