@@ -1,0 +1,1080 @@
+{
+  "type": "bundle",
+  "id": "bundle--6cc88b84-1290-56e7-9964-67ad323a83d0",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "created": "2026-02-13T00:00:00Z",
+      "modified": "2026-02-13T00:00:00Z",
+      "name": "FDC Threat Intelligence",
+      "identity_class": "organization",
+      "description": "Threat intelligence from a distributed honeypot network and incident investigations."
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--69a0c5de-762a-5f2c-b02e-ae9d0bb6c0d0",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "BEC via Compromised NGO Mailbox + Tycoon 2FA AiTM Phishing Kit",
+      "published": "2026-05-12T00:00:00Z",
+      "report_types": [
+        "threat-report"
+      ],
+      "object_refs": [
+        "indicator--8079a27e-3991-5ee8-8b13-f393b738ff30",
+        "indicator--57b70513-a75e-58c8-9c57-6bb7a7dc1e20",
+        "indicator--8450e48f-0a70-5ad8-acfe-b346cf9c29df",
+        "indicator--08e857c5-1b14-57b7-8698-d9171f7e5601",
+        "indicator--7bb8f61c-dc75-5384-a9e6-1bd10a0c4f5c",
+        "indicator--0eb792c5-1154-5ae0-97c7-58c821584a56",
+        "indicator--24e61eaa-5d33-5a19-9a39-a93d06626181",
+        "indicator--48ad3f2d-6c68-56f2-8392-4ce21704bf1b",
+        "indicator--efaacb75-03c1-5741-a29a-f9b00780525b",
+        "indicator--e2b6997f-b561-5cdd-a8ba-514cc5fc6038",
+        "indicator--59c66244-0a94-5c53-9fb6-f34133b1b8c9",
+        "indicator--5e83c783-1b60-560e-aa42-055ff31510a8"
+      ],
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8079a27e-3991-5ee8-8b13-f393b738ff30",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "IP: 198.23.210.61",
+      "description": "RackNerd/ColoCrossing AS36352 — PaaS phishing VPS hosting all 7 cluster domains",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '198.23.210.61']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--57b70513-a75e-58c8-9c57-6bb7a7dc1e20",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "DOMAIN: stiofidri.company",
+      "description": "Tycoon 2FA AiTM kit landing page — primary domain in this campaign",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'stiofidri.company']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8450e48f-0a70-5ad8-acfe-b346cf9c29df",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "DOMAIN: giochogio.company",
+      "description": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'giochogio.company']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--08e857c5-1b14-57b7-8698-d9171f7e5601",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "DOMAIN: crepeawi.business",
+      "description": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'crepeawi.business']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7bb8f61c-dc75-5384-a9e6-1bd10a0c4f5c",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "DOMAIN: crivesha.company",
+      "description": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'crivesha.company']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0eb792c5-1154-5ae0-97c7-58c821584a56",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "DOMAIN: driocriodio.app",
+      "description": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'driocriodio.app']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--24e61eaa-5d33-5a19-9a39-a93d06626181",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "DOMAIN: beawoushoo.digital",
+      "description": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'beawoushoo.digital']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--48ad3f2d-6c68-56f2-8392-4ce21704bf1b",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "DOMAIN: shodiothai.enterprises",
+      "description": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'shodiothai.enterprises']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--efaacb75-03c1-5741-a29a-f9b00780525b",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "URL: https://stiofidri.company/u@xTBw1Q9qK4Qb0ZS9gxFUS/",
+      "description": "Payload URL for this specific campaign",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[url:value = 'https://stiofidri.company/u@xTBw1Q9qK4Qb0ZS9gxFUS/']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e2b6997f-b561-5cdd-a8ba-514cc5fc6038",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "URL: https://nam.dcv.ms/o9XDteis3W",
+      "description": "Microsoft Customer Voice short-link used as lure (form now 404)",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[url:value = 'https://nam.dcv.ms/o9XDteis3W']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--59c66244-0a94-5c53-9fb6-f34133b1b8c9",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "EMAIL: hortensias.psychologue@unapei-ap.fr",
+      "description": "Compromised M365 account used to send phishing — notify, do not block",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[email-addr:value = 'hortensias.psychologue@unapei-ap.fr']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5e83c783-1b60-560e-aa42-055ff31510a8",
+      "created": "2026-05-12T00:00:00Z",
+      "modified": "2026-05-12T00:00:00Z",
+      "created_by_ref": "identity--1c79b696-ef2d-56b1-b61b-98e2af977d08",
+      "name": "TEXT: 3HO3y7Soso1HgJPsnDn2pg==",
+      "description": "XOR key (base64) in phishing kit anti-analysis JS",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[x-custom:value = '3HO3y7Soso1HgJPsnDn2pg==']",
+      "pattern_type": "stix",
+      "valid_from": "2026-05-12T00:00:00Z",
+      "labels": [
+        "phishing",
+        "bec",
+        "aitm",
+        "thread-hijacking",
+        "paas-phishing"
+      ],
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078.004"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1036.005"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027.013"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1497.001"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1480"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1539"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056.003"
+        },
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1114.002"
+        }
+      ]
+    }
+  ]
+}

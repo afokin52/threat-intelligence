@@ -6,6 +6,45 @@ Public threat intelligence reports and indicators of compromise (IOCs) from real
 
 ## Reports
 
+### 2026-05-12 — BEC via Compromised NGO Mailbox + Tycoon 2FA AiTM Phishing Kit
+
+A phishing email was delivered from a legitimate Microsoft 365 mailbox belonging to a French non-profit organisation (UNAPEI Alpes Provence), using three evasion layers: genuine M365 account compromise (bypassing SPF/DKIM/DMARC), thread hijacking with a real French-language medical conversation as context, and a Microsoft Customer Voice (nam.dcv.ms) short-link that resolves through a trusted Microsoft service. The final destination is a Tycoon 2FA / Mamba 2FA class Phishing-as-a-Service (PaaS) kit on a RackNerd VPS, equipped with a fake Gmail CAPTCHA, an XOR-obfuscated cloud-IP filter, and an AiTM mechanism that harvests session cookies to bypass MFA. Seven parallel phishing domains were identified on the same infrastructure cluster, all provisioned on April 17, 2026.
+
+**Key findings:**
+- Account compromise (not spoofing): email transited genuine Exchange Online EU servers (`DB9PR08MB6809.eurprd08.prod.outlook.com`); Message-ID format confirms real M365 mailbox send
+- Thread hijacking: attacker embedded a real March 2026 French-language medical exchange from the victim's mailbox as contextual camouflage; forged signature presents a psychologist as "Chief Financial Officer"
+- Microsoft Customer Voice (`nam.dcv.ms`) abused as a trusted intermediary stage — this scheme has run for 12+ months with 100+ observed campaign scans across English, German, Spanish, and Indonesian targets
+- Tycoon 2FA / Mamba 2FA kit: CAPTCHA gate + XOR-obfuscated `api.ipapi.is` sandbox-IP filter + AiTM session-cookie harvester (Laravel backend, `samesite=none`) on Cloudflare-fronted RackNerd VPS
+- Kit fingerprint: XOR key `3HO3y7Soso1HgJPsnDn2pg==`, decoy redirect to `www[.]meituan[.]com`, URL pattern `/u@<token>/`, recurring typo "FILED" instead of "FILE" in form title
+- Seven disposable domains on `198[.]23[.]210[.]61` (AS36352 RackNerd, Chicago), all using Tencent DNSPod NS, all with Let's Encrypt certificates issued 2026-04-17
+
+**Documents:**
+- [Incident Report (English, TLP:CLEAR)](reports/2026-05-12-bec-thread-hijacking-tycoon2fa/Incident_Report_2026-05-12_EN.pdf)
+- [Отчёт об инциденте (Russian, TLP:CLEAR)](reports/2026-05-12-bec-thread-hijacking-tycoon2fa/Otchet_incident_2026-05-12_TLP_CLEAR.pdf)
+- [IOCs (STIX 2.1)](reports/2026-05-12-bec-thread-hijacking-tycoon2fa/iocs.stix2.json)
+- [IOCs (MISP JSON)](reports/2026-05-12-bec-thread-hijacking-tycoon2fa/iocs.misp.json)
+
+**IOCs:**
+
+| Type | Value |
+|------|-------|
+| IP | `198[.]23[.]210[.]61` (RackNerd/ColoCrossing AS36352 — PaaS phishing VPS) |
+| Domain | `stiofidri[.]company` (Tycoon 2FA kit — primary domain) |
+| Domain | `giochogio[.]company` (cluster) |
+| Domain | `crepeawi[.]business` (cluster) |
+| Domain | `crivesha[.]company` (cluster) |
+| Domain | `driocriodio[.]app` (cluster) |
+| Domain | `beawoushoo[.]digital` (cluster) |
+| Domain | `shodiothai[.]enterprises` (cluster) |
+| URL | `hxxps://stiofidri[.]company/u@xTBw1Q9qK4Qb0ZS9gxFUS/` (payload URL) |
+| URL | `hxxps://nam[.]dcv[.]ms/o9XDteis3W` (Microsoft Customer Voice lure, now 404) |
+| Email | `hortensias.psychologue@unapei-ap[.]fr` (compromised sender — notify, do not block) |
+| Kit artifact | XOR key `3HO3y7Soso1HgJPsnDn2pg==` (anti-sandbox JS) |
+
+**MITRE ATT&CK:** T1583.001, T1583.004, T1586.002, T1078.004, T1566.002, T1566.003, T1656, T1036.005, T1027.013, T1497.001, T1480, T1539, T1056.003, T1114.002
+
+---
+
 ### 2026-05-07 — Honeypot Threat Intelligence: Monthly Report, April 2026
 
 A distributed honeypot network spanning nodes in Germany (DE/Hetzner), the United States (US/HOSTKEY), and Russia (RU/SelectEl) — with a new ICS/OT node launched in Poland on April 28 — recorded 578,657 SSH login attempts, 654 unique malware samples (100% confirmed malicious), and over 236,000 SIP/VoIP scanning events during April 2026. WannaCry-matching PE32 binaries remain in active distribution (884 YARA hits). A coordinated SSH campaign specifically targeted Solana validator usernames (`sol`, `solana`, `solv`) with 37,000+ combined attempts. Attackers are increasingly targeting AI inference infrastructure: 54,032 unauthorized requests were logged against the Ollama API honeypot and 1,049 Docker API sessions were classified as LLM-abuse. A Go-based SSH worm matching Panchan was observed using Discord as a secondary C2 channel. TLS analysis identified 3,383 sessions to `api[.]telegram[.]org`, consistent with Telegram Bot API used as C2 transport.

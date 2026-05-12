@@ -1,0 +1,185 @@
+{
+  "Event": {
+    "uuid": "ad969157-3cdf-5ef2-980b-b4a53ea00282",
+    "info": "[TLP:CLEAR] BEC via Compromised NGO Mailbox + Tycoon 2FA AiTM Phishing Kit",
+    "date": "2026-05-12",
+    "threat_level_id": "2",
+    "distribution": "3",
+    "analysis": "2",
+    "Attribute": [
+      {
+        "uuid": "3919f7be-3713-555c-8d4d-9b7db9860a10",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "198.23.210.61",
+        "to_ids": true,
+        "comment": "RackNerd/ColoCrossing AS36352 — PaaS phishing VPS hosting all 7 cluster domains",
+        "distribution": "5"
+      },
+      {
+        "uuid": "f2c1ffc5-0a5f-5d63-8dc3-8225aa56fd1e",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "stiofidri.company",
+        "to_ids": true,
+        "comment": "Tycoon 2FA AiTM kit landing page — primary domain in this campaign",
+        "distribution": "5"
+      },
+      {
+        "uuid": "5c0c1b51-2920-576a-aa18-8b1e6a3f90ec",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "giochogio.company",
+        "to_ids": true,
+        "comment": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+        "distribution": "5"
+      },
+      {
+        "uuid": "072d9fbe-f63c-5630-aa8e-009ab00a683d",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "crepeawi.business",
+        "to_ids": true,
+        "comment": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+        "distribution": "5"
+      },
+      {
+        "uuid": "3f371bbb-8b70-5767-bc73-bb406e7807d3",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "crivesha.company",
+        "to_ids": true,
+        "comment": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+        "distribution": "5"
+      },
+      {
+        "uuid": "191ccbe4-257e-5961-b0db-02632fc83d69",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "driocriodio.app",
+        "to_ids": true,
+        "comment": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+        "distribution": "5"
+      },
+      {
+        "uuid": "1dc3b07d-2cd2-525b-8865-e92e51e38028",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "beawoushoo.digital",
+        "to_ids": true,
+        "comment": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+        "distribution": "5"
+      },
+      {
+        "uuid": "4219954a-512b-59e8-82e3-abc09bacd8ee",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "shodiothai.enterprises",
+        "to_ids": true,
+        "comment": "Tycoon 2FA cluster domain — same IP/NS/cert date",
+        "distribution": "5"
+      },
+      {
+        "uuid": "1e9d48cf-1502-5327-844d-a36283b8a65d",
+        "type": "url",
+        "category": "External analysis",
+        "value": "https://stiofidri.company/u@xTBw1Q9qK4Qb0ZS9gxFUS/",
+        "to_ids": true,
+        "comment": "Payload URL for this specific campaign",
+        "distribution": "5"
+      },
+      {
+        "uuid": "62895f3d-47dd-5577-9c2c-a9f0ab3e50e6",
+        "type": "url",
+        "category": "External analysis",
+        "value": "https://nam.dcv.ms/o9XDteis3W",
+        "to_ids": true,
+        "comment": "Microsoft Customer Voice short-link used as lure (form now 404)",
+        "distribution": "5"
+      },
+      {
+        "uuid": "a1a0ca24-ed7b-54db-95b6-11eb647b84b7",
+        "type": "email-src",
+        "category": "Payload delivery",
+        "value": "hortensias.psychologue@unapei-ap.fr",
+        "to_ids": false,
+        "comment": "Compromised M365 account used to send phishing — notify, do not block",
+        "distribution": "5"
+      },
+      {
+        "uuid": "306fdbb1-0ae7-5595-9608-655054a32641",
+        "type": "text",
+        "category": "Other",
+        "value": "3HO3y7Soso1HgJPsnDn2pg==",
+        "to_ids": false,
+        "comment": "XOR key (base64) in phishing kit anti-analysis JS",
+        "distribution": "5"
+      }
+    ],
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "type:OSINT"
+      },
+      {
+        "name": "mitre-attack:T1583.001"
+      },
+      {
+        "name": "mitre-attack:T1583.004"
+      },
+      {
+        "name": "mitre-attack:T1586.002"
+      },
+      {
+        "name": "mitre-attack:T1078.004"
+      },
+      {
+        "name": "mitre-attack:T1566.002"
+      },
+      {
+        "name": "mitre-attack:T1566.003"
+      },
+      {
+        "name": "mitre-attack:T1656"
+      },
+      {
+        "name": "mitre-attack:T1036.005"
+      },
+      {
+        "name": "mitre-attack:T1027.013"
+      },
+      {
+        "name": "mitre-attack:T1497.001"
+      },
+      {
+        "name": "mitre-attack:T1480"
+      },
+      {
+        "name": "mitre-attack:T1539"
+      },
+      {
+        "name": "mitre-attack:T1056.003"
+      },
+      {
+        "name": "mitre-attack:T1114.002"
+      },
+      {
+        "name": "label:phishing"
+      },
+      {
+        "name": "label:bec"
+      },
+      {
+        "name": "label:aitm"
+      },
+      {
+        "name": "label:thread-hijacking"
+      },
+      {
+        "name": "label:paas-phishing"
+      }
+    ]
+  }
+}
